@@ -31,5 +31,3 @@
         </div><!-- /.blog-sidebar -->
 
       </div><!-- /.row -->
-
-    </div><!-- /.container -->
