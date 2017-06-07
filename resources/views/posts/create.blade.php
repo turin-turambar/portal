@@ -11,13 +11,18 @@
 		{{csrf_field()}}
 		<div class="form-group">
 			<label for="title">Naslov članka</label>
-			<input type="text" name="title" class="form-control" id="title" placeholder="Naslov" required="true">
+			<input type="text" name="title" class="form-control" id="title" placeholder="Naslov" required>
 		</div>
 		<div class="form-group">
-			<label for="post">Tekst članka</label>
-			<textarea name="post" id="post" class="form-control" rows="5" placeholder="Unesite članak ovde"></textarea>
+			<label for="body">Tekst članka</label>
+			<textarea name="body" id="body" class="form-control" rows="5" placeholder="Unesite članak ovde" required></textarea>
 		</div>
-		<button type="submit" class="btn btn-primary">Submit</button>
+
+		<div class="form-group">
+			<button type="submit" class="btn btn-primary">Objavi</button>
+		</div>
+
+		@include('layouts.errors')
 	</form>
 </div>
 
