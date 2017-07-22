@@ -29,5 +29,3 @@
             </ol>
           </div>
         </div><!-- /.blog-sidebar -->
-
-      </div><!-- /.row -->

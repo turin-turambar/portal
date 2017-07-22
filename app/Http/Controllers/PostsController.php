@@ -10,7 +10,8 @@ class PostsController extends Controller
 {
     public function index()
     {
-    	return view('posts.index');
+    	$posts = Post::latest()->get();
+    	return view('posts.index', compact('posts'));
     }
 
     public function create()
@@ -20,18 +21,16 @@ class PostsController extends Controller
 
     public function store(StoreBlogPost $request)
     {
-    	$post = new Post;
-
-    	/*$this->validate(request(), [
-    		'title'	=>	'required|min:5|max:255',
-    		'body'	=>	'required|min:10'
-    	]);*/
-
-    	$post->create([
+    	Post::create([
     		'title' 	=>	request('title'),
     		'blogPost'	=>	request('body')
     	]);
 
     	return redirect('/');
+    }
+
+    public function show(Post $post)
+    {
+    	return view('posts.show', compact('post'));
     }
 }
