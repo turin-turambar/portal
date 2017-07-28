@@ -3,6 +3,7 @@
 @section('content')
 	<div class="col-sm-8 blog-main">
 		<h1>{{$post->title}}</h1>
+		<p>{{$post->user()->value('firstName')}} {{$post->user()->value('lastName')}} {{$post->created_at->toFormattedDateString()}}</p>
 
 		<p>
 			{{$post->blogPost}}
@@ -24,6 +25,11 @@
 		</div>
 		<h3>Svi komentari:</h3>
 		<div class="comments card">
+			@if(count($post->comments) == 0)
+				<article>
+					Nema komentara za izabrani tekst
+				</article>
+			@else
 			<div class="card-block">
 				@foreach($post->comments as $comment)
 					<article>
@@ -34,6 +40,7 @@
 					</article>
 				@endforeach
 			</div>
+			@endif
 		</div>
 	</div>
 @endsection

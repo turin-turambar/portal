@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\StoreBlogPost;
-use \App\Post;
+use App\Post;
 
 class PostsController extends Controller
 {
+
+	public function __counstruct()
+	{
+		$this->middleware('auth');
+	}
     public function index()
     {
     	$posts = Post::latest()->get();
@@ -23,7 +27,8 @@ class PostsController extends Controller
     {
     	Post::create([
     		'title' 	=>	request('title'),
-    		'blogPost'	=>	request('body')
+    		'blogPost'	=>	request('body'),
+    		'user_id'	=>	auth()->id()
     	]);
 
     	return redirect('/');
